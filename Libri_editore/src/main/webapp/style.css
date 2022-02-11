@@ -1,0 +1,46 @@
+@charset "ISO-8859-1";
+
+header {
+	background: #000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+footer {
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	position: fixed;
+	background-color: #333741;
+	color: red;
+}
+
+
+
+
+
+#form {
+  
+   background-color: red 0.5;
+   
+ 
+}
+
+h1.title{
+	text-align: center;
+}
+
+.abbassa{
+	position:absolute;
+	left:50%;
+	top:10%;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+	}
+.posizionenav{
+	position:fixed;
+}
