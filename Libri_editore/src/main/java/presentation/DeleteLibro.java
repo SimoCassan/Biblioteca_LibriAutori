@@ -8,19 +8,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import controller.AutoreController;
+import controller.LibroController;
 
-@WebServlet("/deleteAutore")
-public class DeleteAutore extends HttpServlet {
+@WebServlet("/deleteLibro")
+public class DeleteLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private AutoreController controller;
+	private LibroController controller;
 	
        
     
-    public DeleteAutore() throws ClassNotFoundException, SQLException {
-        controller = AutoreController.getController();
+    public DeleteLibro() throws ClassNotFoundException, SQLException {
+        controller = LibroController.getController();
     }
 
 	
@@ -31,17 +31,17 @@ public class DeleteAutore extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idAutore = Integer.parseInt(request.getParameter("idAutore"));
 		try {
-			boolean nAutoreCancellati = controller.deleteAutore(idAutore);
+			int idDaCancellare=Integer.parseInt(request.getParameter("deleteId"));
+			int nLibroCancellati = controller.deleteLibro(idDaCancellare);
 			
-			if(nAutoreCancellati == true) {
+			if(nLibroCancellati == 1) {
 				
-				request.setAttribute("avvisoMessaggio",  "Autore cancellato con successo");
+				request.setAttribute("avvisoMessaggio",  "Libro cancellato con successo");
 				
 			}else {
 				
-				request.setAttribute("avvisoMessaggio",  "Anomalia, cancellati " + nAutoreCancellati + " records.");
+				request.setAttribute("avvisoMessaggio",  "Anomalia, cancellati " + nLibroCancellati + " records.");
 				
 			}
 		} catch (SQLException e) {

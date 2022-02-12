@@ -135,8 +135,6 @@ public class Database {
 		
 		return counter;
 				
-				
-		
 	}
 	
 	public int deleteAutore(int idAutore) throws SQLException {
@@ -149,6 +147,27 @@ public class Database {
 		
 		return istruzione.executeUpdate();
 
+}
+	
+	public boolean insertLibro(Libro lib) throws SQLException{
+	String sql="INSERT INTO generation.libro "
+			+ " (id, titolo, prezzo, pagine)"
+			+ " VALUES(?, ?, ?, ?);";
+	
+	PreparedStatement istruzione= con.prepareStatement(sql);
+	
+	istruzione.setInt(1, lib.getId());
+	istruzione.setString(2, lib.getTitolo());
+	istruzione.setDouble(3, lib.getPrezzo());
+	istruzione.setInt(4, lib.getPagine());
+	
+	
+	//executeUpdate si usa per INSERT, UPDATE, DELETE
+	int numRigheModificate=istruzione.executeUpdate();
+	
+	if(numRigheModificate==1) return true;
+	
+	return false;
 }
 
 	public int updateLibro(Libro lib) throws SQLException{
@@ -171,4 +190,7 @@ public class Database {
 		//executeUpdate si usa per INSERT, UPDATE, DELETE
 		return istruzione.executeUpdate();
 	}
-}
+
+	
+	}
+
