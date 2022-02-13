@@ -20,27 +20,30 @@ footer {
 }
 
 
-
-
-
 #form {
-  
-   background-color: red 0.5;
-   
- 
+	background-color: red 0.5;
 }
 
-h1.title{
+h1.title {
 	text-align: center;
 }
 
-.abbassa{
-	position:absolute;
-	left:50%;
-	top:10%;
-	transform:translate(-50%,0%);
-	-ms-transform:translate(-50%,0%)
-	}
-.posizionenav{
-	position:fixed;
+.fix{
+	position: fixed;
+    top: 150px;
+    left: 5px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.alza {
+	position: absolute;
+	left: 50%;
+	top: 10%;
+	transform: translate(+20%, 0%);
+	-ms-transform: translate(+20%, 0%)
+}
+
+.posizionenav {
+	position: fixed;
 }

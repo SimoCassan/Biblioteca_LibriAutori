@@ -36,11 +36,6 @@ public class LibroController {
 
 		return db.updateLibro(daAggiornare);
 	}
-	public int deleteLibro(int id) throws SQLException{
-		Libro daCancellare=new Libro();
-		daCancellare.setId(id);
-		return db.deleteLibro(daCancellare);
-	}
 	public boolean insertLibro(int id, String titolo, double prezzo, int pagine) throws SQLException{
 		Libro daInserire=new Libro();
 		daInserire.setId(id);
@@ -49,5 +44,11 @@ public class LibroController {
 		daInserire.setPagine(pagine);
 
 		return db.insertLibro(daInserire);
+	}
+	
+	public int deleteLibro(int id) throws SQLException{
+		Libro daCancellare=new Libro();
+		daCancellare.setId(id);
+		return db.deleteLibro(daCancellare);
 	}
 }

@@ -33,11 +33,7 @@ public class Database {
 		}
 		return instance;
 	}
-
-
-
-
-
+	
 	public List<Libro> getAllLibri() throws SQLException {
 		String sql = "SELECT id, titolo, prezzo, pagine "
 				+ "FROM generation.libro";
@@ -71,14 +67,10 @@ public class Database {
 			autore.setNome(risultatiQuery.getString("nome"));
 			autore.setCognome(risultatiQuery.getString("cognome"));
 			autore.setNazionalita(risultatiQuery.getString("nazionalita"));
-
-			//Lo aggiungo alla lista degli studenti
 			listaAutori.add(autore);
-		}//fine while
+		}
 		return listaAutori;
 	}
-
-
 
 	public List<AutoreLibro> getAllAutoriLibri() throws SQLException {
 		String sql = "SELECT "
@@ -110,7 +102,6 @@ public class Database {
 		}
 		return listaAutoriLibri;
 	}
-
 
 	public int getAutoriInAutoriLibri(int idAutore) throws SQLException {
 		String sql= "SELECT count(*) AS counter "
@@ -158,7 +149,6 @@ public class Database {
 		istruzione.setString(2, A.getNome());
 		istruzione.setString(3, A.getCognome());
 		istruzione.setString(4, A.getNazionalita());
-		//executeUpdate si usa per INSERT, UPDATE, DELETE
 		return istruzione.executeUpdate();
 	}
 	public int deleteAutore(int idAutore) throws SQLException {
