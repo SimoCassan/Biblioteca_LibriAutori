@@ -6,13 +6,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Lista Autori</title>
  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <%@ include file ="header.jsp" %>
 </head>
 <body>
-
+	<div>
+		<%
+		out.print("<form method = \"post\" action=\"aggiungiAutore\">"
+				+ "<input class=\"ADDA\" type=\"submit\"value=\"Aggiungi Autore\"></input>" + "</form>");
+		%>
+	</div>
 
  <div class="container">
 	<table class="table table-hover">

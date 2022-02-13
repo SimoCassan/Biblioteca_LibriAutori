@@ -1,4 +1,4 @@
-package repository;
+package repo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,6 @@ public class Database {
 	private final static String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
 	private Database() throws SQLException, ClassNotFoundException {
-		//costruttore che ottiene connessione al database
 		Class.forName(DB_DRIVER);
 		con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 	}
@@ -35,9 +34,9 @@ public class Database {
 		return instance;
 	}
 
-	
 
-	
+
+
 
 	public List<Libro> getAllLibri() throws SQLException {
 		String sql = "SELECT id, titolo, prezzo, pagine "
@@ -45,152 +44,174 @@ public class Database {
 		PreparedStatement istruzione = con.prepareStatement(sql);
 		ResultSet risultatiQuery = istruzione.executeQuery();
 		List<Libro> listaLibri = new ArrayList<>();
-		while(risultatiQuery.next()) {//sto dicendo fallo finchè c'è qualcosa dopo .next()
-			//Per ogni recordo crea un nuovo oggetto studente
+		while(risultatiQuery.next()) {
 			Libro libro = new Libro();
-			//Ci imposto dentro le varie colonne della sua riga
 			libro.setId(risultatiQuery.getInt("id"));
 			libro.setTitolo(risultatiQuery.getString("titolo"));
 			libro.setPrezzo(risultatiQuery.getDouble("prezzo"));
 			libro.setPagine(risultatiQuery.getInt("pagine"));
+
 			
-			//Lo aggiungo alla lista degli studenti
 			listaLibri.add(libro);
-		}//fine while
+		}
 		return listaLibri;
 	}
-	
+
 	public List<Autore> getAllAutori() throws SQLException {
 		String sql = "SELECT id, nome, cognome, nazionalita "
 				+ "FROM generation.autore";
 		PreparedStatement istruzione = con.prepareStatement(sql);
 		ResultSet risultatiQuery = istruzione.executeQuery();
-		
+
 		List<Autore> listaAutori = new ArrayList<>();
-		
-		while(risultatiQuery.next()) {//sto dicendo fallo finchè c'è qualcosa dopo .next()
-			//Per ogni recordo crea un nuovo oggetto studente
+
+		while(risultatiQuery.next()) {
 			Autore autore = new Autore();
-			//Ci imposto dentro le varie colonne della sua riga
 			autore.setId(risultatiQuery.getInt("id"));
 			autore.setNome(risultatiQuery.getString("nome"));
 			autore.setCognome(risultatiQuery.getString("cognome"));
 			autore.setNazionalita(risultatiQuery.getString("nazionalita"));
-			
+
 			//Lo aggiungo alla lista degli studenti
 			listaAutori.add(autore);
 		}//fine while
 		return listaAutori;
 	}
-	
-	
-	
+
+
+
 	public List<AutoreLibro> getAllAutoriLibri() throws SQLException {
 		String sql = "SELECT "
-					+ "al.autore_id, "
-					+ "al.libro_id, "
-					+ "a.cognome, "
-					+ "l.titolo, "
-					+ "l.prezzo"
-					+ "FROM generation.autore_libro al "
-					+ "JOIN generation.autore a ON (a.id = al.autore_id) "
-					+ "JOIN generation.libro l ON (l.id = al.libro_id)";
-		
+				+ "al.autore_id, "
+				+ "al.libro_id, "
+				+ "a.cognome, "
+				+ "l.titolo, "
+				+ "l.prezzo"
+				+ "FROM generation.autore_libro al "
+				+ "JOIN generation.autore a ON (a.id = al.autore_id) "
+				+ "JOIN generation.libro l ON (l.id = al.libro_id)";
+
 		PreparedStatement istruzione = con.prepareStatement(sql);
 		ResultSet risultatiQuery = istruzione.executeQuery();
-		
+
 		List<AutoreLibro> listaAutoriLibri = new ArrayList<>();
-		
-		while(risultatiQuery.next()) {//sto dicendo fallo finchè c'è qualcosa dopo .next()
-			//Per ogni recordo crea un nuovo oggetto studente
+
+		while(risultatiQuery.next()) {
 			AutoreLibro autoreLibro = new AutoreLibro();
-			//Ci imposto dentro le varie colonne della sua riga
+
 			autoreLibro.setAlAutoreId(risultatiQuery.getInt("al.autore_id"));
 			autoreLibro.setAlLibroId(risultatiQuery.getInt("al.libro_id"));
 			autoreLibro.setaCognome(risultatiQuery.getString("a.cognome"));
 			autoreLibro.setlTitolo(risultatiQuery.getString("l.titolo"));
 			autoreLibro.setlPrezzo(risultatiQuery.getDouble("l.prezzo"));
-			
-			//Lo aggiungo alla lista degli studenti
+
+
 			listaAutoriLibri.add(autoreLibro);
-		}//fine while
+		}
 		return listaAutoriLibri;
 	}
-	
-	//semplice controllo se ci sono righe coinvolte nel delete
+
+
 	public int getAutoriInAutoriLibri(int idAutore) throws SQLException {
 		String sql= "SELECT count(*) AS counter "
 				+ "FROM generation.autore_libro al "
 				+ "WHERE al.autore_id = ?";
-		
+
 		PreparedStatement istruzione = con.prepareStatement(sql);
-		
+
 		istruzione.setInt(1, idAutore);
-		
+
 		ResultSet risultatiQuery = istruzione.executeQuery();
 		int counter = 0;
 		while(risultatiQuery.next()) {
 			counter =  risultatiQuery.getInt("counter");
 		}
-		
+
 		return counter;
-				
+
 	}
-	
+	public boolean insertAutore(Autore A) throws SQLException{
+		String sql="INSERT INTO generation.autore "
+				+ " (id, nome, cognome, nazionalita)"
+				+ " VALUES(?, ?, ?, ?);";
+
+		PreparedStatement istruzione= con.prepareStatement(sql);
+
+		istruzione.setInt(1, A.getId());
+		istruzione.setString(2, A.getNome());
+		istruzione.setString(3, A.getCognome());
+		istruzione.setString(4, A.getNazionalita());
+
+		int numRigheModificate=istruzione.executeUpdate();
+
+		if(numRigheModificate==1) return true;
+
+		return false;
+	}
+
+	public int updateAutore(Autore A) throws SQLException{
+		String sql="UPDATE generation.autore "
+				+ " SET id=?, nome=?, cognome=?, nazionalita=? "
+				+ " WHERE id=? ; ";
+		PreparedStatement istruzione= con.prepareStatement(sql);
+		istruzione.setInt(1, A.getId());
+		istruzione.setString(2, A.getNome());
+		istruzione.setString(3, A.getCognome());
+		istruzione.setString(4, A.getNazionalita());
+		//executeUpdate si usa per INSERT, UPDATE, DELETE
+		return istruzione.executeUpdate();
+	}
 	public int deleteAutore(int idAutore) throws SQLException {
 		String sql= "DELETE FROM generation.autore "
 				+ "WHERE al.autore_id = ?";
-		
+
 		PreparedStatement istruzione = con.prepareStatement(sql);
-		
+
 		istruzione.setInt(1, idAutore);
-		
+
 		return istruzione.executeUpdate();
 
-}
-	
+	}
+
 	public boolean insertLibro(Libro lib) throws SQLException{
-	String sql="INSERT INTO generation.libro "
-			+ " (id, titolo, prezzo, pagine)"
-			+ " VALUES(?, ?, ?, ?);";
-	
-	PreparedStatement istruzione= con.prepareStatement(sql);
-	
-	istruzione.setInt(1, lib.getId());
-	istruzione.setString(2, lib.getTitolo());
-	istruzione.setDouble(3, lib.getPrezzo());
-	istruzione.setInt(4, lib.getPagine());
-	
-	
-	//executeUpdate si usa per INSERT, UPDATE, DELETE
-	int numRigheModificate=istruzione.executeUpdate();
-	
-	if(numRigheModificate==1) return true;
-	
-	return false;
-}
+		String sql="INSERT INTO generation.libro "
+				+ " (id, titolo, prezzo, pagine)"
+				+ " VALUES(?, ?, ?, ?);";
+
+		PreparedStatement istruzione= con.prepareStatement(sql);
+
+		istruzione.setInt(1, lib.getId());
+		istruzione.setString(2, lib.getTitolo());
+		istruzione.setDouble(3, lib.getPrezzo());
+		istruzione.setInt(4, lib.getPagine());
+
+		int numRigheModificate=istruzione.executeUpdate();
+
+		if(numRigheModificate==1) return true;
+
+		return false;
+	}
 
 	public int updateLibro(Libro lib) throws SQLException{
-			String sql="UPDATE generation.libro "
-					+ " SET id=?, titolo=?, prezzo=?, pagine=? "
-					+ " WHERE id=? ; ";
-			PreparedStatement istruzione= con.prepareStatement(sql);
-			istruzione.setInt(1, lib.getId());
-			istruzione.setString(2, lib.getTitolo());
-			istruzione.setDouble(3, lib.getPrezzo());
-			istruzione.setInt(4, lib.getPagine());
-			//executeUpdate si usa per INSERT, UPDATE, DELETE
-			return istruzione.executeUpdate();
-		}
-	
+		String sql="UPDATE generation.libro "
+				+ " SET id=?, titolo=?, prezzo=?, pagine=? "
+				+ " WHERE id=? ; ";
+		PreparedStatement istruzione= con.prepareStatement(sql);
+		istruzione.setInt(1, lib.getId());
+		istruzione.setString(2, lib.getTitolo());
+		istruzione.setDouble(3, lib.getPrezzo());
+		istruzione.setInt(4, lib.getPagine());
+		return istruzione.executeUpdate();
+	}
+
 	public int deleteLibro(Libro lib) throws SQLException{
 		String sql="DELETE FROM generation.libro WHERE id=? ; ";
 		PreparedStatement istruzione= con.prepareStatement(sql);		
 		istruzione.setInt(1, lib.getId());
-		//executeUpdate si usa per INSERT, UPDATE, DELETE
+
 		return istruzione.executeUpdate();
 	}
 
-	
-	}
+
+}
 
