@@ -27,8 +27,7 @@ public class AutoreController {
 		return db.getAllAutori();
 	}
 	
-	//metodo per fare il controllo per il metodo di delete
-	
+
 	public boolean deleteAutore(int idAutore) throws SQLException {
 		
 		if(db.getAutoriInAutoriLibri(idAutore)>0) {

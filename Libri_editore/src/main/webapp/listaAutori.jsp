@@ -19,7 +19,7 @@
 // 				+ "<input class=\"ADDA\" type=\"submit\"value=\"Aggiungi Autore\"></input>" + "</form>");
 		
 <%-- 		%> --%>
-		<%@ include file ="aggiungiAutore.html" %>
+		<%@ include file ="aggiungiAutore.jsp" %>
 	</div>
 
  <div class="container">
