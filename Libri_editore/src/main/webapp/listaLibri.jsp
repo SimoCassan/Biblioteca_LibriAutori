@@ -43,7 +43,7 @@
 					out.print("<td>" + p.getPrezzo() + "</td>");
 					out.print("<td>" + p.getPagine() + "</td>");
 
-					out.print("<td>" + "<form method = \"post\" action=\"cancellaLibro?deleteId=" + p.getId() + "\">"
+					out.print("<td>" + "<form method = \"post\" action=\"deleteLibro?deleteId=" + p.getId() + "\">"
 					+ "<input type=\"submit\"value=\"Elimina\"></input>" + "</form> </td>");
 					out.print("<td>" + "<form method = \"get\" action=\"modificaLibro\">"
 					+ "<input type=\"text\" hidden name=\"modificaId\" value=\"" + p.getId() + "\" >"
