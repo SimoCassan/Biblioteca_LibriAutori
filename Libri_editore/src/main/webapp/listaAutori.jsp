@@ -14,8 +14,10 @@
 <body>
 	<div class="container-fluid">
 	<br>
-
 		<%@ include file ="aggiungiAutore.jsp" %>
+	</div>
+	<div class="container-fluid">
+	<br>
 		<%@ include file ="modificaAutore.jsp" %>
 	</div>
 
@@ -61,5 +63,4 @@
 	</table>
  </div>
  
-</body>
-</html>
+<%@ include file="footer.jsp" %>

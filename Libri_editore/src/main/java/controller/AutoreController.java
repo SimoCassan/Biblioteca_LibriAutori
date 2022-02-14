@@ -29,15 +29,15 @@ public class AutoreController {
 	}
 	
 
-	public boolean deleteAutore(int idAutore) throws SQLException {
+	public int deleteAutore(int id) throws SQLException {
 		
-		if(db.getAutoriInAutoriLibri(idAutore)>0) {
-			return false;
-		}else {
-			db.deleteAutore(idAutore);
-			return true;
-		}
-				
+		/*
+		 * if(db.getAutoriInAutoriLibri(idAutore)>0) { return false; }else {
+		 * db.deleteAutore(idAutore); return true; }
+		 */
+		Autore daCancellare=new Autore();
+		daCancellare.setId(id);
+		return db.deleteAutore(daCancellare);	
 	}
 
 	public boolean insertAutore(String nome, String cognome, String nazionalita) throws SQLException {
@@ -49,7 +49,19 @@ public class AutoreController {
 
 		return db.insertAutore(daInserire);
 	}
+	public Autore getAutoreById(int idAutore) throws SQLException {
+		return db.getAutoreById(idAutore);
+	}
+	
+	public int updateAutore(String nome,String cognome,String nazionalita ) throws SQLException{
+		Autore daAggiornare=new Autore();
 		
+		daAggiornare.setNome(nome);
+		daAggiornare.setCognome(cognome);
+		daAggiornare.setNazionalita(nazionalita);
+
+		return db.updateAutore(daAggiornare);
+	}
 
 	
 }

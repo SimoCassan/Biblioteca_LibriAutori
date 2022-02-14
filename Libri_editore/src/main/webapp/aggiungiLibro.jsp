@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div>
+<div >
 <form action="aggiungiLibro" method="post">
 
 	<input type="text" name="titolo" placeholder="Titolo"><br>

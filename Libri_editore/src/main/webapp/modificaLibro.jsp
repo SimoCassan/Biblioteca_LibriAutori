@@ -9,6 +9,7 @@
 <body>
 <br>
 <br>
+<div >
 <form action="modificaLibro" method="post">
 
 	<input type="text" name="titolo" placeholder="Titolo"><br>
@@ -18,5 +19,6 @@
 
 
 </form>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <footer>
-    <p class="footer">Tutti i diritti di Servlet Streaming sono riservati, molto riservati ©</p>
+    <p class="footer">Se funzionasse sarebbe tutto molto bello ©</p>
 
 </footer>
 </body>

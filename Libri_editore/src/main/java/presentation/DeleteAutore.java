@@ -33,9 +33,9 @@ public class DeleteAutore extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idAutore = Integer.parseInt(request.getParameter("idAutore"));
 		try {
-			boolean nAutoreCancellati = controller.deleteAutore(idAutore);
+			int nAutoreCancellati = controller.deleteAutore(idAutore);
 			
-			if(nAutoreCancellati == true) {
+			if(nAutoreCancellati == 1) {
 				
 				request.setAttribute("avvisoMessaggio",  "Autore cancellato con successo");
 				

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div>
+<div >
 <form action="aggiungiAutore" method="post">
 
 	<input type="text" name="nome" placeholder="Nome"><br>

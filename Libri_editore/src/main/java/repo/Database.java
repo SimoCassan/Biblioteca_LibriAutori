@@ -174,18 +174,8 @@ public class Database {
 		istruzione.setString(4, A.getNazionalita());
 		return istruzione.executeUpdate();
 	}
-	public int deleteAutore(int idAutore) throws SQLException {
-		String sql= "DELETE FROM generation.autore "
-				+ "WHERE al.autore_id = ?";
 
-		PreparedStatement istruzione = con.prepareStatement(sql);
-
-		istruzione.setInt(1, idAutore);
-
-		return istruzione.executeUpdate();
-
-	}
-
+	
 	public boolean insertLibro(Libro lib) throws SQLException{
 		String sql="INSERT INTO generation.libro "
 				+ " (titolo, prezzo, pagine)"
@@ -225,6 +215,16 @@ public class Database {
 		return istruzione.executeUpdate();
 	}
 	
+	public int deleteAutore(int idAutore) throws SQLException {
+		String sql= "DELETE FROM generation.autore "
+				+ "WHERE al.autore_id = ?";
+		
+		PreparedStatement istruzione = con.prepareStatement(sql);
+		
+		istruzione.setInt(1, idAutore);
+		
+		return istruzione.executeUpdate();
+	}
 	public Autore getAutoreById(int idAutore) throws SQLException {
 		String sql= "SELECT id, nome, cognome, nazionalita "
 				+ "FROM generation.autore a "
@@ -245,5 +245,7 @@ public class Database {
 		}
 	return null;
 	}
+
+	
 	}
 
