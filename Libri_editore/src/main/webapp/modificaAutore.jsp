@@ -7,18 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <div>
-<form action="aggiungiAutore" method="post">
+
+<form action="modificaAutore" method="post">
+<br>
+<br>
 
 	<input type="text" name="nome" placeholder="Nome"><br>
-	<input type="text" name="Cognome" placeholder="Cognome"><br>
-	<input type="text" name="naz" placeholder="Nazionalita'"><br>
-	<input type="submit" value="Aggiungi Autores">
+	<input type="text" name="cognome" placeholder="Cognome"><br>
+	<input type="text" name="nazionalita" placeholder="Nazionalita"><br>
+	<input type="submit" value="Modifica Autore">
 
 
 </form>
 </div>
-
 </body>
 </html>

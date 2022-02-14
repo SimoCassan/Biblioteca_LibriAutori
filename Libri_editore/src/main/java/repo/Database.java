@@ -96,7 +96,7 @@ public class Database {
 			autoreLibro.setaCognome(risultatiQuery.getString("a.cognome"));
 			autoreLibro.setlTitolo(risultatiQuery.getString("l.titolo"));
 			autoreLibro.setlPrezzo(risultatiQuery.getDouble("l.prezzo"));
-
+			
 
 			listaAutoriLibri.add(autoreLibro);
 		}
@@ -119,8 +119,31 @@ public class Database {
 		}
 
 		return counter;
+	}
+		
+		public Libro getLibroById(int idLibro) throws SQLException {
+			String sql= "SELECT id, titolo, prezzo, pagine "
+					+ "FROM generation.libro l "
+					+ "WHERE id = ?";
+
+			PreparedStatement istruzione = con.prepareStatement(sql);
+
+			istruzione.setInt(1, idLibro);
+
+			ResultSet risultatiQuery = istruzione.executeQuery();
+			while(risultatiQuery.next()) {
+			Libro L=new Libro();
+			L.setId(risultatiQuery.getInt("id"));
+			L.setTitolo(risultatiQuery.getString("titolo"));
+			L.setPrezzo(risultatiQuery.getDouble("prezzo"));
+			L.setPagine(risultatiQuery.getInt("pagine"));
+			return L;
+			}
+			
+			return null;
 
 	}
+		
 	public boolean insertAutore(Autore A) throws SQLException{
 		String sql="INSERT INTO generation.autore "
 				+ " (id, nome, cognome, nazionalita)"
@@ -165,15 +188,15 @@ public class Database {
 
 	public boolean insertLibro(Libro lib) throws SQLException{
 		String sql="INSERT INTO generation.libro "
-				+ " (id, titolo, prezzo, pagine)"
-				+ " VALUES(?, ?, ?, ?);";
+				+ " (titolo, prezzo, pagine)"
+				+ " VALUES(?, ?, ?);";
 
 		PreparedStatement istruzione= con.prepareStatement(sql);
 
-		istruzione.setInt(1, lib.getId());
-		istruzione.setString(2, lib.getTitolo());
-		istruzione.setDouble(3, lib.getPrezzo());
-		istruzione.setInt(4, lib.getPagine());
+		
+		istruzione.setString(1, lib.getTitolo());
+		istruzione.setDouble(2, lib.getPrezzo());
+		istruzione.setInt(3, lib.getPagine());
 
 		int numRigheModificate=istruzione.executeUpdate();
 
@@ -184,13 +207,13 @@ public class Database {
 
 	public int updateLibro(Libro lib) throws SQLException{
 		String sql="UPDATE generation.libro "
-				+ " SET id=?, titolo=?, prezzo=?, pagine=? "
+				+ " SET titolo=?, prezzo=?, pagine=? "
 				+ " WHERE id=? ; ";
 		PreparedStatement istruzione= con.prepareStatement(sql);
-		istruzione.setInt(1, lib.getId());
-		istruzione.setString(2, lib.getTitolo());
-		istruzione.setDouble(3, lib.getPrezzo());
-		istruzione.setInt(4, lib.getPagine());
+		istruzione.setString(1, lib.getTitolo());
+		istruzione.setDouble(2, lib.getPrezzo());
+		istruzione.setInt(3, lib.getPagine());
+		istruzione.setInt(4, lib.getId());
 		return istruzione.executeUpdate();
 	}
 
@@ -201,7 +224,26 @@ public class Database {
 
 		return istruzione.executeUpdate();
 	}
+	
+	public Autore getAutoreById(int idAutore) throws SQLException {
+		String sql= "SELECT id, nome, cognome, nazionalita "
+				+ "FROM generation.autore a "
+				+ "WHERE id = ?";
 
+		PreparedStatement istruzione = con.prepareStatement(sql);
 
-}
+		istruzione.setInt(1, idAutore);
+
+		ResultSet risultatiQuery = istruzione.executeQuery();
+		while(risultatiQuery.next()) {
+		Autore A=new Autore();
+		A.setId(risultatiQuery.getInt("id"));
+		A.setNome(risultatiQuery.getString("nome"));
+		A.setCognome(risultatiQuery.getString("cognome"));
+		A.setNazionalita(risultatiQuery.getString("nazionalita"));
+		return A;
+		}
+	return null;
+	}
+	}
 

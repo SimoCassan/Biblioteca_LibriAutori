@@ -27,18 +27,21 @@ public class LibroController {
 	public List<Libro> getAllLibri() throws SQLException{
 		return db.getAllLibri();
 	}
-	public int updateLibro(int id, String titolo, double prezzo, int pagine) throws SQLException{
+	public Libro getLibroById(int idLibro) throws SQLException {
+		return db.getLibroById(idLibro);
+	}
+	public int updateLibro(String titolo, double prezzo, int pagine) throws SQLException{
 		Libro daAggiornare=new Libro();
-		daAggiornare.setId(id);
+		
 		daAggiornare.setTitolo(titolo);
 		daAggiornare.setPrezzo(prezzo);
 		daAggiornare.setPagine(pagine);
 
 		return db.updateLibro(daAggiornare);
 	}
-	public boolean insertLibro(int id, String titolo, double prezzo, int pagine) throws SQLException{
+	public boolean insertLibro(String titolo, double prezzo, int pagine) throws SQLException{
 		Libro daInserire=new Libro();
-		daInserire.setId(id);
+		
 		daInserire.setTitolo(titolo);
 		daInserire.setPrezzo(prezzo);
 		daInserire.setPagine(pagine);

@@ -7,17 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<div>
-<form action="aggiungiLibro" method="post">
+<br>
+<br>
+<form action="modificaLibro" method="post">
 
 	<input type="text" name="titolo" placeholder="Titolo"><br>
 	<input type="text" name="prezzo" placeholder="Prezzo"><br>
 	<input type="text" name="pagine" placeholder="Numero pagine"><br>
-	<input type="submit" value="Aggiungi il libro">
+	<input type="submit" value="Modifica il libro">
 
 
 </form>
-</div>
 </body>
 </html>

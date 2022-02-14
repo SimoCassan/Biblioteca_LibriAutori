@@ -14,12 +14,9 @@
 <body>
 	<div class="container-fluid">
 	<br>
-<%-- 		<% --%>
-<%--// 		out.print("<form method = \"post\" action=\"aggiungiAutore\">"
-// 				+ "<input class=\"ADDA\" type=\"submit\"value=\"Aggiungi Autore\"></input>" + "</form>");
-		
-<%-- 		%> --%>
+
 		<%@ include file ="aggiungiAutore.jsp" %>
+		<%@ include file ="modificaAutore.jsp" %>
 	</div>
 
  <div class="container">

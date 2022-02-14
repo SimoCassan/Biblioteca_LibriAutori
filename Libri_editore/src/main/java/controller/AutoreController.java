@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
  
 import model.Autore;
+import model.Libro;
 import repo.Database;
  
 public class AutoreController {
@@ -38,6 +39,18 @@ public class AutoreController {
 		}
 				
 	}
+
+	public boolean insertAutore(String nome, String cognome, String nazionalita) throws SQLException {
+		Autore daInserire=new Autore();
+		
+		daInserire.setNome(nome);
+		daInserire.setCognome(cognome);
+		daInserire.setNazionalita(nazionalita);
+
+		return db.insertAutore(daInserire);
+	}
+		
+
 	
 }
  
