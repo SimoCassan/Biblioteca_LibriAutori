@@ -215,13 +215,13 @@ public class Database {
 		return istruzione.executeUpdate();
 	}
 	
-	public int deleteAutore(int idAutore) throws SQLException {
+	public int deleteAutore(Autore A) throws SQLException {
 		String sql= "DELETE FROM generation.autore "
 				+ "WHERE al.autore_id = ?";
 		
 		PreparedStatement istruzione = con.prepareStatement(sql);
 		
-		istruzione.setInt(1, idAutore);
+		istruzione.setInt(1, A.getId());
 		
 		return istruzione.executeUpdate();
 	}

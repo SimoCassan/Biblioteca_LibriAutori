@@ -22,7 +22,7 @@
 	</div>
 
  <div class="container">
-	<table class="table table-hover">
+	<table class="table table-dark table-hover">
 	<tr> 
 		<th class="w3-grey">ID</th>	
 		<th class="w3-grey">Nome</th>
@@ -62,5 +62,10 @@
  
 	</table>
  </div>
- 
+  <div>
+   
+   <br>
+   <br>
+   <br>
+   </div>
 <%@ include file="footer.jsp" %>

@@ -4,7 +4,7 @@
 }
 
 header {
-	background: #000000;
+	
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -18,7 +18,7 @@ footer {
 	left: 0;
 	width: 100%;
 	position: fixed;
-	background-color: #333741;
+	
 	color: red;
 }
 
@@ -51,10 +51,7 @@ h1.title {
 }
 
 body {
-    background: #222;
-    color:#efefef;
-
-    font-family: 'Titillium Web',sans-serif ;
+	font-family: 'Titillium Web',sans-serif ;
 }
 
 
@@ -63,16 +60,9 @@ body {
     margin: auto;
 }
 
-
-
-
 #hero {
     padding:1rem;
 }
-
-/* -------------------------------------------------------------------------- */
-/*                                   SERVIZI                                  */
-/* -------------------------------------------------------------------------- */
 
 #servizi {
 
@@ -80,7 +70,7 @@ body {
 
 }
 
-.servizioBox {
+.immaginiSotto {
     width:33%; 
     padding:1rem;
 }

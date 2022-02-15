@@ -15,13 +15,12 @@
 <body>
 	<div class="container-fluid">
 	<br>
-
 		<%@ include file ="aggiungiLibro.jsp" %>
 		<%@ include file ="modificaLibro.jsp" %>
-		<br>
+	<br>
 	</div>
 	<div class="container">
-		<table class="table table-hover">
+		<table class="table table-dark table-hover">
 			<tr>
 				<th class="w3-grey">ID</th>
 				<th class="w3-grey">Titolo</th>
@@ -55,7 +54,11 @@
 
 		</table>
 	</div>
-
+ 	<div>
+   <br>
+   <br>
+   <br>
+   </div>
 	<%
 	String msg = (String) request.getAttribute("avvisoMessaggio");
 	if (msg != null) {

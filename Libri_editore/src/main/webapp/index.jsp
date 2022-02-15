@@ -9,17 +9,23 @@
             </div>
 
             <div id="servizi">
-                <div class="servizioBox">
+                <div class="immaginiSotto">
                     <img src="https://source.unsplash.com/600x400/?book" alt="">
                     <h2>Libri belli</h2>
                 </div>
-                <div class="servizioBox"><img src="https://source.unsplash.com/600x400/?paper" alt="">
+                <div class="immaginiSotto"><img src="https://source.unsplash.com/600x400/?paper" alt="">
                     <h2>Libri normali </h2>
                 </div>
-                <div class="servizioBox"><img src="https://source.unsplash.com/600x400/?poems" alt="">
+                <div class="immaginiSotto"><img src="https://source.unsplash.com/600x400/?poems" alt="">
                     <h2>Libri meno belli</h2>
                 </div>
             </div>
             </main>
-            </div>
+   </div>
+   <div>
+   
+   <br>
+   <br>
+   <br>
+   </div>
 <%@ include file="footer.jsp" %>
