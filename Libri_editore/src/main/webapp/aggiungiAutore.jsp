@@ -12,8 +12,8 @@
 <form action="aggiungiAutore" method="post">
 
 	<input type="text" name="nome" placeholder="Nome"><br>
-	<input type="text" name="Cognome" placeholder="Cognome"><br>
-	<input type="text" name="naz" placeholder="Nazionalita'"><br>
+	<input type="text" name="cognome" placeholder="Cognome"><br>
+	<input type="text" name="nazionalita" placeholder="Nazionalita'"><br>
 	<input type="submit" value="Aggiungi Autores">
 
 

@@ -217,7 +217,7 @@ public class Database {
 	
 	public int deleteAutore(Autore A) throws SQLException {
 		String sql= "DELETE FROM generation.autore "
-				+ "WHERE al.autore_id = ?";
+				+ "WHERE id = ?";
 		
 		PreparedStatement istruzione = con.prepareStatement(sql);
 		
