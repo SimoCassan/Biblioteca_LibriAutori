@@ -18,7 +18,7 @@ footer {
 	left: 0;
 	width: 100%;
 	position: fixed;
-	
+	background-color: red;
 	color: red;
 }
 
@@ -51,7 +51,8 @@ h1.title {
 }
 
 body {
-	font-family: 'Titillium Web',sans-serif ;
+	background: #222;
+	
 }
 
 

@@ -14,7 +14,7 @@
                 <div class="immaginiSotto"><img src="https://source.unsplash.com/400x400/?paper" alt="">
                     <h2>Libri normali </h2>
                 </div>
-                <div class="immaginiSotto"><img src="https://source.unsplash.com/400x400/?poems" alt="">
+                <div class="immaginiSotto"><img src="https://source.unsplash.com/400x400/?words" alt="">
                     <h2>Libri meno belli</h2>
                 </div>
             </div>
